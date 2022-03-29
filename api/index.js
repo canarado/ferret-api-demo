@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     let randomFile = files[Math.floor(Math.random() * files.length)];
 
     res.json({
-        file: `${config.webUrlName}${randomFile}`,
+        file: `${config.webUrlName ?? 'http://localhost:4583/'}${randomFile}`,
     });
 });
 
