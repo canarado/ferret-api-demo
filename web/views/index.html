@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferret API Demo and Documentation</title>
+</head>
+<body>
+    <h1>Ferret API Demo and Documentation</h1>
+
+    <div id="imagecontainer" class="image"></div>
+    <button id="image_button" onclick="newImage()">Click Here to get a new image!</button>
+    <script>
+
+        newImage();
+
+        function newImage() {
+            fetch('http://localhost:4582/')
+                .then(response => response.json())
+                .then(data => {
+                    
+                    let ferret = document.getElementById('ferret');
+                    if(!ferret) {
+                        ferret = document.createElement('img');
+                        ferret.id = 'ferret';
+                        ferret.style.width = 'auto';
+                        ferret.style.height = '300px';
+
+                        document.getElementById('imagecontainer').appendChild(ferret)
+                    }
+
+                    document.getElementById('ferret').src = data.file;
+                });
+        }
+    </script>
+</body>
+</html>
