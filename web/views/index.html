@@ -5,18 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferret API Demo and Documentation</title>
+
+    <style>
+        .image_button {
+            align-items: center;
+            background-color: #0A66C2;
+            border: 0;
+            border-radius: 100px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 480px;
+            min-height: 40px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+        }
+
+        .image_button:hover,
+        .image_button:focus { 
+            background-color: #16437E;
+            color: #ffffff;
+        }
+
+        .image_button:active {
+            background: #09223b;
+            color: rgb(255, 255, 255, .7);
+        }
+
+        .image_button:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+        }
+
+        .content {
+            /* width: 900px;
+            margin: 0px auto 0px auto; */
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Ferret API Demo and Documentation</h1>
+    <div class="content">
+        <h1>Ferret API Demo and Documentation</h1>
 
-    <div id="imagecontainer" class="image"></div>
-    <button id="image_button" onclick="newImage()">Click Here to get a new image!</button>
+        <div id="imagecontainer" class="image">
+            <noscript>PLEASE ENABLE JAVASCRIPT TO USE THIS RESOURCE</noscript>
+        </div>
+        <button class="image_button" onclick="newImage()">Click Here to get a new image!</button>
+
+        <div id="documentation">
+            <br /><br />
+            The API URL is <a href="https://api.ferret.canarado.xyz/">api.ferret.canarado.xyz/</a>. Making a get request to this url will return a JSON object<br /><br />
+            The payload the api returns is:<br /><code>
+                {
+                    file: link.to/file.jpg
+                }
+            </code><br /><br />
+            The communication is as follows in this demo:<br />2 webservers are spun up > All data is routed through CloudFlare ><br /> the frontend webserver recieves a get request and sends an HTML file containing this demo ><br />
+            when the button on this page is clicked, it makes an AJAX request to the API webserver ><br /> the API webserver recieves a GET request and randomly picks an available image ><br />
+            a link is generated to a static resource hosted on the frontend webserver and sent back to the client > the image is displayed.<br /><br />
+
+            <a href="https://github.com/canarado/ferret-api-demo">View Github Repo Here</a>
+        </div>
+    </div>
     <script>
 
         newImage();
 
         function newImage() {
-            fetch('http://localhost:4582/')
+            fetch('http://api.ferret.canarado.xyz/')
                 .then(response => response.json())
                 .then(data => {
                     

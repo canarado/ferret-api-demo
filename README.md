@@ -11,14 +11,12 @@ In this application, there are two webservers being ran, one is a REST API that 
 - Express.js
 - REST
 - Markdown
-- SQL
-- Cache
 - Git
 
 ## Installing
 
-THIS IS DOES NOT NEED TO BE DONE FOR DEMO PURPOSES.
-I host a live version of this app for demo purposes on my personal [site](https://ferret.canarado.xyz/).
+THIS DOES NOT NEED TO BE DONE FOR DEMO PURPOSES.
+I host a live version of this app for demo purposes on my [personal site](https://ferret.canarado.xyz/).
 
 You will need Node.js v16 or above and `npm` or `yarn`.
 
